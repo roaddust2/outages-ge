@@ -37,7 +37,12 @@ Best part? It's completely free, now and in the future.
 
 ## Installation
 
--
+```bash
+# Poetry required
+
+make install
+make dev
+```
 
 ## Contributing
 
