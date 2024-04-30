@@ -2,101 +2,98 @@
 {% block content %}
 <div class="container">
     <!-- About -->
-<div class="row mt-5">
-    <div class="col">
-        <h1 class="h2"><i class="fa-solid fa-circle-info"></i> About</h1>
-        <p>Hi there, I'm Mark. Having lived in Georgia, I know firsthand how disruptive infrastructure outages can be, especially when working from home. That's why I created this app — it consolidates public outage data, making it easier to track everything in one place. Plus, you can subscribe to outage notifications via a Telegram bot.</p>
-        <br>
-        <p>Best part? It's completely free, now and in the future.</p>
+    <div class="row mt-5">
+        <div class="col">
+            <h1 class="h2"><i class="fa-solid fa-circle-info"></i> About</h1>
+            <p>Hi there, I'm Mark. Having lived in Georgia, I know firsthand how disruptive infrastructure outages can be, especially when working from home. That's why I created this app — it consolidates public outage data, making it easier to track everything in one place. Plus, you can subscribe to outage notifications via a Telegram bot.</p>
+            <br>
+            <p>Best part? It's completely free, now and in the future.</p>
+        </div>
     </div>
-</div>
 
 <!-- Map -->
-<div class="row align-items-center">
-    <!-- Description -->
-    <div class="col-4">
-        <h1 class="h2"><i class="fa-solid fa-map"></i> Interactive map</h1>
-        <div class="form-check form-switch mb-3">
-            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
-            <label class="form-check-label" for="flexSwitchCheckChecked">Automatic refresh</label>
-        </div>
-        <p>Explore the interactive map, pinpointing areas impacted by outages. Hover over each section to reveal the number of streets currently affected. Updated in real-time, providing accurate information at your fingertips.</p>
-        <hr class="me-4">
-        <div class="d-flex align-items-center">
-            <a class="btn btn-lg btn-primary d-flex align-items-center justify-content-center me-2" href="#">
-                <i class="fa-brands fa-telegram me-1"></i>
-                Subscribe
-            </a>
-            <p class="m-0">Stay tuned for the latest updates on nearby disruptions</p>
-        </div>
-    </div>
-    <!-- Object -->
-    <div class="col text-center">
-        <object type="image/svg+xml" data="/static/map.svg" width="628" height="440"></object>
-    </div>
-</div>
-
-<!-- Search -->
-<div class="row">
-    <div class="col">
-        <div class="d-flex flex-column">
-            <!-- Input -->
-            <h1 class="h2"><i class="fa-solid fa-magnifying-glass"></i> Search</h1>
-            <p>Just write down your street name and press “Search”!</p>
-            <form class="d-flex me-auto mb-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Street..." aria-label="Search">
-                <button class="btn btn-primary" type="submit">Search</button>
-            </form>
-
-            <!-- Table -->
-            <div class="border rounded mb-3">
-                <section class="w-100 p-4">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                            <th scope="col">Street</th>
-                            <th scope="col">Type</th>
-                            <th scope="col">Provider</th>
-                            <th scope="col">Emergency</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">End</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <td>Zestafoni</td>
-                            <td>💡 Electricity</td>
-                            <td>Telmico</td>
-                            <td>Yes</td>
-                            <td>19.04.2024 11:25</td>
-                            <td>19.04.2024 11:25</td>
-                            </tr>
-                            <tr>
-                            <td>Marjanishvili</td>
-                            <td>💡 Electricity</td>
-                            <td>Telasi</td>
-                            <td>No</td>
-                            <td>19.04.2024 13:30</td>
-                            <td>19.04.2024 13:30</td>
-                            </tr>
-                            <tr>
-                            <td>Vazha-Pshavela</td>
-                            <td>💧 Water</td>
-                            <td>GWP</td>
-                            <td>No</td>
-                            <td>19.04.2024 15:00</td>
-                            <td>19.04.2024 15:00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
+    <div class="row align-items-center">
+        <!-- Description -->
+        <div class="col-4">
+            <h1 class="h2"><i class="fa-solid fa-map"></i> Interactive map</h1>
+            <div class="form-check form-switch mb-3">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                <label class="form-check-label" for="flexSwitchCheckChecked">Automatic refresh</label>
             </div>
-            
+            <p>Explore the interactive map, pinpointing areas impacted by outages. Hover over each section to reveal the number of streets currently affected. Updated in real-time, providing accurate information at your fingertips.</p>
+            <hr class="me-4">
+            <div class="d-flex align-items-center">
+                <a class="btn btn-lg btn-primary d-flex align-items-center justify-content-center me-2" href="#">
+                    <i class="fa-brands fa-telegram me-1"></i>
+                    Subscribe
+                </a>
+                <p class="m-0">Stay tuned for the latest updates on nearby disruptions</p>
+            </div>
+        </div>
+        <!-- Object -->
+        <div class="col text-center">
+            {% include 'map.html' %}
+        </div>
+    </div>
+
+    <!-- Search -->
+    <div class="row">
+        <div class="col">
+            <div class="d-flex flex-column">
+                <!-- Input -->
+                <h1 class="h2"><i class="fa-solid fa-magnifying-glass"></i> Search</h1>
+                <p>Just write down your street name and press “Search”!</p>
+                <form class="d-flex me-auto mb-3" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Street..." aria-label="Search">
+                    <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+                <!-- Table -->
+                <div class="border rounded mb-3">
+                    <section class="w-100 p-4">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                <th scope="col">Street</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Provider</th>
+                                <th scope="col">Emergency</th>
+                                <th scope="col">Start</th>
+                                <th scope="col">End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                <td>Zestafoni</td>
+                                <td>💡 Electricity</td>
+                                <td>Telmico</td>
+                                <td>Yes</td>
+                                <td>19.04.2024 11:25</td>
+                                <td>19.04.2024 11:25</td>
+                                </tr>
+                                <tr>
+                                <td>Marjanishvili</td>
+                                <td>💡 Electricity</td>
+                                <td>Telasi</td>
+                                <td>No</td>
+                                <td>19.04.2024 13:30</td>
+                                <td>19.04.2024 13:30</td>
+                                </tr>
+                                <tr>
+                                <td>Vazha-Pshavela</td>
+                                <td>💧 Water</td>
+                                <td>GWP</td>
+                                <td>No</td>
+                                <td>19.04.2024 15:00</td>
+                                <td>19.04.2024 15:00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-</div>
-
 <!-- <script>
     d3.json("/static/tbilisi_districts.geojson").then(function(data) {
         // Load jeojson object

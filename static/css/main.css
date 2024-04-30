@@ -7,3 +7,45 @@
 .content {
     flex: 1;
 }
+
+
+/* Map styles */
+
+.map svg {
+    overflow: visible;
+}
+
+.map path {
+    fill: #E9ECEF;
+    stroke: #000000;
+    stroke-width: 2px;
+    transition: fill 0.5s;
+}
+
+.map path:hover {
+    fill: #ADB5BD;
+}
+
+.map path.success {
+    fill: #A3CFBB;
+}
+
+.map path.success:hover {
+    fill: #198754;
+}
+
+.map path.warning {
+    fill: #FFE69C;
+}
+
+.map path.warning:hover {
+    fill: #FFC107;
+}
+
+.map path.danger {
+    fill: #F1AEB5;
+}
+
+.map path.danger:hover {
+    fill: #DC3545;
+}
