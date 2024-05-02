@@ -10,7 +10,7 @@
             <p>Best part? It's completely free, now and in the future.</p>
         </div>
     </div>
-
+{{ districts }}
 <!-- Map -->
     <div class="row align-items-center">
         <!-- Description -->
@@ -63,29 +63,14 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <!-- TODO: Add loop -->
                                     <tr>
-                                    <td>Zestafoni</td>
-                                    <td>💡 Electricity</td>
-                                    <td>Telmico</td>
-                                    <td>Yes</td>
-                                    <td>19.04.2024 11:25</td>
-                                    <td>19.04.2024 11:25</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Marjanishvili</td>
-                                    <td>💡 Electricity</td>
-                                    <td>Telasi</td>
-                                    <td>No</td>
-                                    <td>19.04.2024 13:30</td>
-                                    <td>19.04.2024 13:30</td>
-                                    </tr>
-                                    <tr>
-                                    <td>Vazha-Pshavela</td>
-                                    <td>💧 Water</td>
-                                    <td>GWP</td>
-                                    <td>No</td>
-                                    <td>19.04.2024 15:00</td>
-                                    <td>19.04.2024 15:00</td>
+                                    <td>Street</td>
+                                    <td>Type</td>
+                                    <td>Provider</td>
+                                    <td>Emergency</td>
+                                    <td>Start</td>
+                                    <td>End</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -96,13 +81,4 @@
         </div>
     </div>
 </div>
-<!-- <script>
-    d3.json("/static/tbilisi_districts.geojson").then(function(data) {
-        // Load jeojson object
-        console.log(data);
-    }).catch(function(error) {
-        // Handle errors
-        console.error("Error loading GeoJSON:", error);
-});
-</script> -->
 {% endblock %}
