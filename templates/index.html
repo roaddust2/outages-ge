@@ -14,7 +14,7 @@
 <!-- Map -->
     <div class="row align-items-center">
         <!-- Description -->
-        <div class="col-4">
+        <div class="col-12 col-lg-4 mb-3 mb-lg-0">
             <h1 class="h2"><i class="fa-solid fa-map"></i> Interactive map</h1>
             <div class="form-check form-switch mb-3">
                 <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
@@ -31,7 +31,7 @@
             </div>
         </div>
         <!-- Object -->
-        <div class="col text-center">
+        <div class="col-12 col-lg-8 text-center mb-3 mb-lg-0">
             {% include 'map.html' %}
         </div>
     </div>
@@ -43,51 +43,53 @@
                 <!-- Input -->
                 <h1 class="h2"><i class="fa-solid fa-magnifying-glass"></i> Search</h1>
                 <p>Just write down your street name and press “Search”!</p>
-                <form class="d-flex me-auto mb-3" role="search">
+                <form class="d-flex me-lg-auto mb-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Street..." aria-label="Search">
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
                 <!-- Table -->
                 <div class="border rounded mb-3">
                     <section class="w-100 p-4">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                <th scope="col">Street</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Provider</th>
-                                <th scope="col">Emergency</th>
-                                <th scope="col">Start</th>
-                                <th scope="col">End</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td>Zestafoni</td>
-                                <td>💡 Electricity</td>
-                                <td>Telmico</td>
-                                <td>Yes</td>
-                                <td>19.04.2024 11:25</td>
-                                <td>19.04.2024 11:25</td>
-                                </tr>
-                                <tr>
-                                <td>Marjanishvili</td>
-                                <td>💡 Electricity</td>
-                                <td>Telasi</td>
-                                <td>No</td>
-                                <td>19.04.2024 13:30</td>
-                                <td>19.04.2024 13:30</td>
-                                </tr>
-                                <tr>
-                                <td>Vazha-Pshavela</td>
-                                <td>💧 Water</td>
-                                <td>GWP</td>
-                                <td>No</td>
-                                <td>19.04.2024 15:00</td>
-                                <td>19.04.2024 15:00</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                    <th scope="col">Street</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Provider</th>
+                                    <th scope="col">Emergency</th>
+                                    <th scope="col">Start</th>
+                                    <th scope="col">End</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                    <td>Zestafoni</td>
+                                    <td>💡 Electricity</td>
+                                    <td>Telmico</td>
+                                    <td>Yes</td>
+                                    <td>19.04.2024 11:25</td>
+                                    <td>19.04.2024 11:25</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Marjanishvili</td>
+                                    <td>💡 Electricity</td>
+                                    <td>Telasi</td>
+                                    <td>No</td>
+                                    <td>19.04.2024 13:30</td>
+                                    <td>19.04.2024 13:30</td>
+                                    </tr>
+                                    <tr>
+                                    <td>Vazha-Pshavela</td>
+                                    <td>💧 Water</td>
+                                    <td>GWP</td>
+                                    <td>No</td>
+                                    <td>19.04.2024 15:00</td>
+                                    <td>19.04.2024 15:00</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </section>
                 </div>
             </div>
