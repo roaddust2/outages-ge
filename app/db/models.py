@@ -1,62 +1,79 @@
 from datetime import datetime
 import uuid
-from sqlalchemy import MetaData, Table, Column, ForeignKey
+
+from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import func
 from sqlalchemy import (
+    ForeignKey,
     Integer,
     String,
     Text,
     Boolean,
-    TIMESTAMP,
+    DateTime,
     Uuid
 )
 
+from .base import Base
 
-metadata = MetaData()
+
+class City(Base):
+    """City model"""
+
+    __tablename__ = 'city'
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name_en: Mapped[str] = mapped_column(String(255), nullable=False)
+    name_ka: Mapped[str] = mapped_column(String(255), nullable=False)
+    
+    districts: Mapped['District'] = relationship('District', back_populates='city')
 
 
-cities = Table(
-    'cities',
-    metadata,
-    Column('id', Integer, primary_key=True),
-    Column('name_en', String(255), nullable=False),
-    Column('name_ka', String(255), nullable=False),
-)
+class District(Base):
+    """District model"""
 
-districts = Table(
-    'districts',
-    metadata,
-    Column('id', Integer, primary_key=True),
-    Column('name_en', String(255), nullable=False),
-    Column('name_ka', String(255), nullable=False),
+    __tablename__ = 'district'
 
-    Column('city_id', Integer, ForeignKey('cities.id'))
-)
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    city_id: Mapped[int] = mapped_column(Integer, ForeignKey('city.id'))
+    name_en: Mapped[str] = mapped_column(String(255), nullable=False)
+    name_ka: Mapped[str] = mapped_column(String(255), nullable=False)
 
-streets = Table(
-    'streets',
-    metadata,
-    Column('id', Integer, primary_key=True),
-    Column('name_en', String(255)),
-    Column('name_ka', String(255), nullable=False),
+    city = relationship('City', back_populates='districts')
+    streets = relationship('Street', back_populates='district')
 
-    Column('district_id', Integer, ForeignKey('districts.id'))
-)
 
-outages = Table(
-    'outages',
-    metadata,
-    Column('id', Integer, primary_key=True),
-    Column('type', String(255), nullable=False),
-    Column('provider', String(255), nullable=False),
-    Column('emergency', Boolean, nullable=False),
-    Column('title_en', String(255)),
-    Column('title_ka', String(255)),
-    Column('description_en', Text),
-    Column('description_ka', Text),
-    Column('start', TIMESTAMP),
-    Column('end', TIMESTAMP),
-    Column('uuid', Uuid, default=uuid.uuid4),
-    Column('created_at', TIMESTAMP, default=datetime.now),
+class Street(Base):
+    """Street model"""
 
-    Column('street_id', Integer, ForeignKey('streets.id'))
-)
+    __tablename__ = 'street'
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    district_id: Mapped[int] = mapped_column(Integer, ForeignKey('district.id'))
+    name_en: Mapped[str] = mapped_column(String(255), nullable=False)
+    name_ka: Mapped[str] = mapped_column(String(255), nullable=False)
+
+    district = relationship('District', back_populates='streets')
+    outages = relationship('Outage', back_populates='street')
+
+
+class Outage(Base):
+    """Outage model"""
+
+    __tablename__ = 'outage'
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    street_id: Mapped[int] = mapped_column(Integer, ForeignKey('street.id'))
+    house_number: Mapped[int] = mapped_column(Integer, nullable=True)
+    type: Mapped[str] = mapped_column(String(255), nullable=False)
+    provider: Mapped[str] = mapped_column(String(255), nullable=False)
+    emergency: Mapped[bool] = mapped_column(Boolean, nullable=False)
+    title_en: Mapped[str] = mapped_column(String(255), nullable=True)
+    title_ka: Mapped[str] = mapped_column(String(255), nullable=True)
+    description_en: Mapped[str] = mapped_column(Text, nullable=True)
+    description_ka: Mapped[str] = mapped_column(Text, nullable=True)
+    start: Mapped[datetime] = mapped_column(DateTime, nullable=True)
+    end: Mapped[datetime] = mapped_column(DateTime, nullable=True)
+    uuid: Mapped['uuid.UUID'] = mapped_column(Uuid, default=uuid.uuid4, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=func.now, nullable=False)
+
+    street = relationship('Street', back_populates='outages')
