@@ -51,6 +51,7 @@ class Street(Base):
     district_id: Mapped[int] = mapped_column(Integer, ForeignKey('district.id'))
     name_en: Mapped[str] = mapped_column(String(255), nullable=False)
     name_ka: Mapped[str] = mapped_column(String(255), nullable=False)
+    osm_id: Mapped[int] = mapped_column(Integer, nullable=False)
 
     district = relationship('District', back_populates='streets')
     outages = relationship('Outage', back_populates='street')
