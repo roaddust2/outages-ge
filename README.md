@@ -33,7 +33,7 @@ Best part? It's completely free, now and in the future.
 - [FastAPI](https://github.com/tiangolo/fastapi)
 - [Bootstrap 5](https://getbootstrap.com/)
 - [htmx](https://github.com/bigskysoftware/htmx)
-- [aiogram](https://github.com/aiogram/aiogram)
+- [OpenStreetMap](https://www.openstreetmap.org/) data with [overpy](https://github.com/DinoTools/python-overpy) wrapper
 
 ## Installation
 
