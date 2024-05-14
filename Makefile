@@ -12,6 +12,13 @@ lint:
 dev:
 	$(ENV) uvicorn main:app --reload
 
+setup:
+	$(ENV) python3 ./app/cli.py setup_cities
+	$(ENV) python3 ./app/cli.py setup_districts
+
+update-streets:
+	$(ENV) python3 ./app/cli.py update_streets
+
 
 # Alembic migrations
 

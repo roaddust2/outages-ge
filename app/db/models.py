@@ -24,7 +24,7 @@ class City(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     name_en: Mapped[str] = mapped_column(String(255), nullable=False)
     name_ka: Mapped[str] = mapped_column(String(255), nullable=False)
-    
+
     districts: Mapped['District'] = relationship('District', back_populates='city')
 
 
@@ -49,7 +49,7 @@ class Street(Base):
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
     district_id: Mapped[int] = mapped_column(Integer, ForeignKey('district.id'))
-    name_en: Mapped[str] = mapped_column(String(255), nullable=False)
+    name_en: Mapped[str] = mapped_column(String(255), nullable=True)
     name_ka: Mapped[str] = mapped_column(String(255), nullable=False)
     osm_id: Mapped[int] = mapped_column(Integer, nullable=False)
 
