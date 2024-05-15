@@ -3,7 +3,9 @@
 
 # outages-ge
 
-An app that consolidates public outage data in Georgia (Sakartvelo), making it easier to track everything in one place and stay notified.
+An app that consolidates public outage data in Georgia (Sakartvelo), making it easier to track everything in one place and stay notified.  
+![preview_1](https://github.com/roaddust2/outages-ge/assets/42116054/f642c74c-e60d-4ea2-b134-554c6d7f716e)
+
 
 ## Table of Contents
 
