@@ -78,3 +78,16 @@ class Outage(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=func.now, nullable=False)
 
     street = relationship('Street', back_populates='outages')
+
+
+class HashSum(Base):
+    """
+    Instance of this model represents hash of different webpages\n
+    Used to check if webpage is updated
+    """
+
+    __tablename__ = 'hash_sum'
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    url: Mapped[str] = mapped_column(String(255), nullable=False)
+    value: Mapped[str] = mapped_column(String(64), nullable=False)
