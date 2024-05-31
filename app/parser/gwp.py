@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, date
 from urllib.parse import urljoin
 from app.parser.base import AbstractProvider
 from typing import List
@@ -33,7 +33,7 @@ class GWP(AbstractProvider):
         return outages_by_district
 
     async def _get_outages(
-        self, url: str, current_date: datetime.date, emergency: bool
+        self, url: str, current_date: date, emergency: bool
     ) -> List[dict]:
         """Scraps outages on high level from outages list view"""
 
@@ -47,7 +47,7 @@ class GWP(AbstractProvider):
                 row.find('span', {'style': 'color:#f00000'}).text.strip(),
                 '%d/%m/%Y'
             ).date()
-            if date <= current_date:
+            if date >= current_date:
                 link = urljoin(self.ROOT_URL, row.a.get('href'))
                 title = row.find_all("a")[1].get_text(strip=True)
                 result.append(
@@ -97,3 +97,7 @@ class GWP(AbstractProvider):
                     )
 
         return result
+    
+    # TODO: divide outages by streets
+    async def _divide_outages_by_streets():
+        pass

@@ -5,8 +5,6 @@ import httpx
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 
-from app.parser.exceptions import GetOutagesError
-
 
 class AbstractProvider(ABC):
     """
@@ -48,20 +46,16 @@ class AbstractProvider(ABC):
     async def get_outages(self) -> list:
         """Wrapper"""
 
-        try:
-            start_time = time.time()
-            logging.debug("Scrapping started.")
-            scrapped_outages = await self.scrap_outages(emergency=False)
-            scrapped_outages.extend(await self.scrap_outages(emergency=True))
-            logging.debug(
-                f"Scrapping ended. "
-                f"{len(scrapped_outages)} elements in {time.time() - start_time}s"
-            )
+        start_time = time.time()
+        logging.debug("Scrapping started.")
+        scrapped_outages = await self.scrap_outages(emergency=False)
+        scrapped_outages.extend(await self.scrap_outages(emergency=True))
+        logging.debug(
+            f"Scrapping ended. "
+            f"{len(scrapped_outages)} elements in {time.time() - start_time}s"
+        )
 
-            return scrapped_outages
-
-        except Exception as err:
-            raise GetOutagesError(err)
+        return scrapped_outages
 
     @staticmethod
     async def _get_soup(url: str) -> BeautifulSoup:
