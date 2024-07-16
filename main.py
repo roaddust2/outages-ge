@@ -7,7 +7,6 @@ from fastapi.templating import Jinja2Templates
 
 from typing import List
 
-from app.parser.exceptions import GetOutagesError
 from app.parser.gwp import GWP
 
 
